@@ -35,6 +35,13 @@ namespace IQiYiCrawler
             }
 
             app.UseMvc();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "api/{controller=movies}/{action=get}/{id?}");
+            });
         }
     }
 }
