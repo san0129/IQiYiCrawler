@@ -41,23 +41,42 @@ namespace IQiYiCrawler
             string imagePath = "div[@class='site-piclist_pic']/a/img";
             string urlPath = "div[@class='site-piclist_pic']/a";
             string rolePath = "div[@class='site-piclist_info']";
+            string scorePath = "div[@class='site-piclist_info']/div/span/strong";
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(innerHtml);
             HtmlNodeCollection imgNodeList = doc.DocumentNode.SelectNodes(imagePath);
             HtmlNodeCollection urlNodeList = doc.DocumentNode.SelectNodes(urlPath);
             HtmlNodeCollection roleNodeList = doc.DocumentNode.SelectNodes(rolePath);
+            HtmlNodeCollection scoreNodeList = doc.DocumentNode.SelectNodes(scorePath);
             HtmlNode imgNode = imgNodeList.FirstOrDefault();
             HtmlNode urlNode = urlNodeList.FirstOrDefault();
-            HtmlNode roleNode = roleNodeList.FirstOrDefault();
+            HtmlNode roleNode = roleNodeList.FirstOrDefault();    
             MovieViewModel movie = new MovieViewModel();
             movie.Url = $"http://jx.vgoodapi.com/jx.php?url={urlNode.Attributes["href"].Value}";
             movie.Title = urlNode.Attributes["title"].Value;
             movie.Id = urlNode.Attributes["data-qipuid"].Value;
             movie.ImageUrl = imgNode.Attributes["src"].Value;
-            var infoStr = roleNode.InnerText.Replace(" ", "").Replace("\r\n", ",");
-            var infos = ProcessRepetition(infoStr).Trim(',').Split(',');
-            movie.Score = infos[0];
-            movie.Role = string.Join("",infos[2],infos[3],infos[4]);
+            if (scoreNodeList != null)
+            {
+                HtmlNode scoreNode = scoreNodeList.FirstOrDefault();
+                movie.Score = scoreNode.InnerText;//评分
+            }
+            {
+                var infoStr = roleNode.InnerText.Replace(" ", "").Replace("\r\n", ",");
+                infoStr = ProcessRepetition(infoStr).Trim(',');
+                var infos = infoStr.Split(",");
+
+                if (infos.Length > 2)
+                {
+                    string newInfo = "";
+                    for (int i = 2; i < infos.Length; i++)
+                    {
+                        newInfo += string.Join("", infos[i]);
+                    }
+                    movie.Role = newInfo.Replace(",", " ");
+                }
+            }
+
             return movie;
         }
 
