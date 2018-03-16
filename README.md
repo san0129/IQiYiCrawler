@@ -1,6 +1,6 @@
 ﻿# 爱奇艺爬虫
 * 使用方法:
-请求[http://movies.llili.cn/api/movies?page=1](http://movies.llili.cn/api/movies?page=1)
+请求[http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017](http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017)
 * 参数
     *  page:页数 <br>如:page=1
     *  region:地区 <br>默认全部 1华语 28997香港 2美国 3欧洲 4韩国 308日本 1115泰国 5其它
