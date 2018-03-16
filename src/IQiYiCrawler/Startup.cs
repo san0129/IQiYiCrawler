@@ -53,6 +53,12 @@ namespace IQiYiCrawler
                     name: "default",
                     template: "api/{controller=movies}/{action=get}/{id?}");
             });
+
+            app.UseCors(builder =>
+            builder.AllowAnyOrigin().
+            AllowAnyMethod().
+            AllowAnyHeader().
+            AllowCredentials());
         }
     }
 }
