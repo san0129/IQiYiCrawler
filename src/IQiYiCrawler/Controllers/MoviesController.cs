@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IQiYiCrawler.Controllers
 {
-    [EnableCors("any")]
     public class MoviesController : Controller
     {
         public IActionResult Index()
@@ -18,9 +17,9 @@ namespace IQiYiCrawler.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<MovieViewModel> Get(int page=1)
+        public IEnumerable<MovieViewModel> Get(int page=1, string region = "", string type = "",string guige="",string year="")
         {
-            return MoviesSearch.Crawler($"http://list.iqiyi.com/www/1/-------------11-{page}-1-iqiyi--.html");
+            return MoviesSearch.Crawler($"http://list.iqiyi.com/www/1/{region}-{type}-----{guige}-----{year}--11-{page}-1-iqiyi--.html");
         }
     }
 }
