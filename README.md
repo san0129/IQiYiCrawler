@@ -1,7 +1,7 @@
 ﻿# 爱奇艺爬虫
 * 使用方法:
 请求[http://movies.llili.cn/api/movies?page=1](http://movies.llili.cn/api/movies?page=1)
-* 参数:
+1. 参数:
    1. page:页数 如:page=1
    2. region:地区 默认全部 1华语 28997香港 2美国 3欧洲 4韩国 308日本 1115泰国 5其它
    3. type:类型 默认全部 8喜剧 13悲剧 6爱情 11动作 131枪战 291犯罪 128惊悚 10恐怖 289悬疑 12动画 27356家庭 1284奇幻
