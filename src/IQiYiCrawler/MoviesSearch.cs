@@ -49,14 +49,31 @@ namespace IQiYiCrawler
             HtmlNode imgNode = imgNodeList.FirstOrDefault();
             HtmlNode urlNode = urlNodeList.FirstOrDefault();
             HtmlNode roleNode = roleNodeList.FirstOrDefault();
-            MovieViewModel palyList = new MovieViewModel();
-            palyList.Url = $"http://jx.vgoodapi.com/jx.php?url={urlNode.Attributes["href"].Value}";
-            palyList.Title = urlNode.Attributes["title"].Value;
-            palyList.Id = urlNode.Attributes["data-qipuid"].Value;
-            palyList.ImageUrl = imgNode.Attributes["src"].Value;
-            var infostr = roleNode.InnerText.Replace(" ", "").Replace("\r\n", ",");
+            MovieViewModel movie = new MovieViewModel();
+            movie.Url = $"http://jx.vgoodapi.com/jx.php?url={urlNode.Attributes["href"].Value}";
+            movie.Title = urlNode.Attributes["title"].Value;
+            movie.Id = urlNode.Attributes["data-qipuid"].Value;
+            movie.ImageUrl = imgNode.Attributes["src"].Value;
+            var infoStr = roleNode.InnerText.Replace(" ", "").Replace("\r\n", ",");
+            var infos = ProcessRepetition(infoStr).Trim(',').Split(',');
+            movie.Score = infos[0];
+            movie.Role = string.Join("",infos[2],infos[3],infos[4]);
+            return movie;
+        }
 
-            return palyList;
+        private static string ProcessRepetition(string oldStr)
+        {
+            string newStr = "";
+            char oldChar = '_';
+            for (int i = 0; i < oldStr.Length; i++)
+            {
+                if (oldChar != oldStr[i])
+                {
+                    oldChar = oldStr[i];
+                    newStr += oldStr[i];
+                }
+            }
+            return newStr;
         }
 
     }

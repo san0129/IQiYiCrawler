@@ -34,7 +34,7 @@ namespace IQiYiCrawler
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            //app.UseMvc();
 
             app.UseMvc(routes =>
             {

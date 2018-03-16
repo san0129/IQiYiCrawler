@@ -18,7 +18,7 @@ namespace IQiYiCrawler.Controllers
         [HttpGet]
         public IEnumerable<MovieViewModel> Get(int page=1)
         {
-            return MoviesSearch.Crawler("http://list.iqiyi.com/");
+            return MoviesSearch.Crawler($"http://list.iqiyi.com/www/1/-------------11-{page}-1-iqiyi--.html");
         }
     }
 }
