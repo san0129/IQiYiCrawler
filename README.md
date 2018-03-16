@@ -1,7 +1,7 @@
 ﻿# 爱奇艺爬虫
 * 使用方法:
-     *    最简单的使用方法GET方式请求[http://movies.llili.cn/api/movies](http://movies.llili.cn/api/movies)
-     *    全部参数的例子GET方式请求[http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017](http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017)
+ * 最简单的使用方法GET方式请求[http://movies.llili.cn/api/movies](http://movies.llili.cn/api/movies)
+ * 全部参数的例子GET方式请求[http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017](http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017)
      
 * 项目简介:
      *    .net core webapi的练手项目 服务器采用Debian9
