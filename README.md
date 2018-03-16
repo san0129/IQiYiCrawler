@@ -3,7 +3,7 @@
     *    最简单的使用方法GET方式请求[http://movies.llili.cn/api/movies](http://movies.llili.cn/api/movies)
     *    全部参数的例子GET方式请求[http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017](http://movies.llili.cn/api/movies?page=1&regin=1&type=11&guige=27815&year=2017)
 * 项目简介
-    *    .net core webapi的练手项目 服务器采用Debian9
+    *    net core webapi的练手项目 服务器采用Debian9
     *    前端是朋友用vue写的，[项目链接](https://github.com/fengle0224/web_tv)
     *    项目链接[http://movies.llili.cn/]（http://movies.llili.cn/）
 * 参数
