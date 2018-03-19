@@ -24,6 +24,9 @@ namespace IQiYiCrawler.Controllers
         [HttpGet]
         public IEnumerable<MovieViewModel> Get(string classify = "/www/1/-------------11-{0}-1-iqiyi--.html", int page = 1)
         {
+            if (string.IsNullOrEmpty(classify)) {
+                classify = "/www/1/-------------11-{0}-1-iqiyi--.html";
+            }
             //11-2-1-iqiyi--
             if (!string.IsNullOrEmpty(classify) && classify != "/www/1/-------------11-{0}-1-iqiyi--.html")
             {
