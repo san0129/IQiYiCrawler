@@ -41,7 +41,7 @@ namespace IQiYiCrawler.Controllers
                 else
                 {
                     index = classify.IndexOf("iqiyi");
-                    classify = classify.Remove(index - 3, 1);
+                    //classify = classify.Remove(index - 3, 1);
                     classify = classify.Insert(index - 2, "1");
                     classify = classify.Insert(index - 3, "{0}");
                     classify = classify.Insert(index - 4, "11");
