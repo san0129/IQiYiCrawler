@@ -12,6 +12,7 @@ namespace IQiYiCrawler.Controllers
     [Route("api/Classify")]
     public class ClassifyController : Controller
     {
+        [HttpGet]
         public IEnumerable<ClassifyViewModel> Get(string classify)
         {
             return ClassifySearch.Crawler("http://list.iqiyi.com"+ classify);
