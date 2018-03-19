@@ -17,7 +17,7 @@ namespace IQiYiCrawler
         private static Logger logger = new Logger(typeof(MoviesSearch));
         public static List<MovieViewModel> Crawler(string url)
         {
-            List<MovieViewModel> palyLists = new List<MovieViewModel>();
+            List<MovieViewModel> movies = new List<MovieViewModel>();
             try
             {
                 string html = HttpHelper.DownloadPalyList(url);
@@ -27,14 +27,14 @@ namespace IQiYiCrawler
                 HtmlNodeCollection nodeList = doc.DocumentNode.SelectNodes(fristPath);
                 foreach (HtmlNode node in nodeList)
                 {
-                    palyLists.Add(GetPalyList(node.InnerHtml));
+                    movies.Add(GetPalyList(node.InnerHtml));
                 }
             }
             catch (Exception ex)
             {
                 logger.Error("CrawlerMuti出现异常", ex);
             }
-            return palyLists;
+            return movies;
         }
         private static MovieViewModel GetPalyList(string innerHtml)
         {
