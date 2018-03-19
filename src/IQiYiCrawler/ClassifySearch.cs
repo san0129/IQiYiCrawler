@@ -43,12 +43,12 @@ namespace IQiYiCrawler
             doc.LoadHtml(html);
             HtmlNodeCollection typeNameList = doc.DocumentNode.SelectNodes(classifyNamePath);
             HtmlNodeCollection keyValueNodeList = doc.DocumentNode.SelectNodes(keyValuePath);
-         
+
             HtmlNode classifyNameNode = typeNameList.FirstOrDefault();
             classify.ClassifyName = classifyNameNode.InnerText;
             foreach (var keyValuePar in keyValueNodeList)
             {
-                classify.keyValues.Add(keyValuePar.InnerText, keyValuePar.Attributes["href"].Value);
+                classify.DetailClassify.Add(new DetailClassifyViewModel { Name = keyValuePar.InnerText, Value = keyValuePar.Attributes["href"].Value });
             }
             return classify;
         }

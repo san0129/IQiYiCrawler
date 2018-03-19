@@ -9,9 +9,14 @@ namespace IQiYiCrawler.Models
     {
         public ClassifyViewModel()
         {
-            keyValues = new Dictionary<string, string>();
+            DetailClassify = new List<DetailClassifyViewModel>();
         }
         public string ClassifyName { get; set; }
-        public Dictionary<string, string> keyValues;
+        public List<DetailClassifyViewModel> DetailClassify { get; set; }
+    }
+    public class DetailClassifyViewModel
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }
