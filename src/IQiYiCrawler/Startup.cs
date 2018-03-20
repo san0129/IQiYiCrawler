@@ -24,7 +24,18 @@ namespace IQiYiCrawler
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddMvc(); 
+            services.AddMvc();
+
+            var urls = Configuration["AppConfig:Cores"].Split(',');
+            services.AddCors(options =>
+            options.AddPolicy("AllowSameDomain",
+              builder => 
+              builder.WithOrigins(urls).
+              AllowAnyMethod().
+              AllowAnyHeader().
+              AllowAnyOrigin().
+              AllowCredentials())
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
