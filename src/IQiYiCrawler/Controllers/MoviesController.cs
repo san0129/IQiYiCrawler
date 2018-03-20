@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IQiYiCrawler.Controllers
 {
-    [EnableCors("AllowSameDomain")]
+    [EnableCors("any")]
     public class MoviesController : Controller
     {
         public IActionResult Index()
