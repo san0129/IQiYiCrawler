@@ -22,10 +22,11 @@ namespace IQiYiCrawler
                 string fristPath = "//div[@class='mod_sear_menu mt20 mb30']/div";
                 HtmlNodeCollection nodeList = doc.DocumentNode.SelectNodes(fristPath);
                 foreach (HtmlNode node in nodeList)
-
                 {
                     classifyList.Add(GetClassify(node.InnerHtml));
                 }
+                classifyList.RemoveAll(x => x.ClassifyName.Contains("您还可以搜索"));
+
             }
             catch (Exception ex)
             {
@@ -45,9 +46,14 @@ namespace IQiYiCrawler
             HtmlNodeCollection keyValueNodeList = doc.DocumentNode.SelectNodes(keyValuePath);
 
             HtmlNode classifyNameNode = typeNameList.FirstOrDefault();
+
             classify.ClassifyName = classifyNameNode.InnerText;
             foreach (var keyValuePar in keyValueNodeList)
             {
+                if (keyValuePar.InnerText == "财经")
+                    break;
+                if (keyValuePar.InnerText == "更多" || keyValuePar.InnerText == "收起")
+                    continue;
                 classify.DetailClassify.Add(new DetailClassifyViewModel { Name = keyValuePar.InnerText, Value = keyValuePar.Attributes["href"].Value });
             }
             return classify;
