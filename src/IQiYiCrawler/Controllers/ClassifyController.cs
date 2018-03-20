@@ -9,9 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IQiYiCrawler.Controllers
 {
-    [EnableCors("AllowSameDomain")]
-    [Produces("application/json")]
-    [Route("api/Classify")]
+    [EnableCors("any")]
     public class ClassifyController : Controller
     {
         [HttpGet]
