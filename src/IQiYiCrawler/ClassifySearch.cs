@@ -16,7 +16,7 @@ namespace IQiYiCrawler
             List<ClassifyViewModel> classifyList = new List<ClassifyViewModel>();
             try
             {
-                string html = HttpHelper.DownloadPalyList(url);
+                string html = HttpHelper.Download(url);
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(html);
                 string fristPath = "//div[@class='mod_sear_menu mt20 mb30']/div";

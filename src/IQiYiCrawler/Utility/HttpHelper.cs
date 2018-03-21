@@ -16,7 +16,7 @@ namespace IQiYiCrawler.Utility
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static string DownloadPalyList(string url)
+        public static string Download(string url)
         {
             return DownloadHtml(url, System.Text.Encoding.UTF8);
         }
@@ -26,10 +26,10 @@ namespace IQiYiCrawler.Utility
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static string DownloadSongList(string url)
-        {
-            return DownloadHtml(url, System.Text.Encoding.UTF8);
-        }
+        //public static string Download(string url)
+        //{
+        //    return DownloadHtml(url, System.Text.Encoding.UTF8);
+        //}
         /// <summary>
         /// 下载html
         /// http://tool.sufeinet.com/HttpHelper.aspx

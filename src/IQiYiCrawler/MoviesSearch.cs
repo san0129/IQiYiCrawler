@@ -20,7 +20,7 @@ namespace IQiYiCrawler
             List<MovieViewModel> movies = new List<MovieViewModel>();
             try
             {
-                string html = HttpHelper.DownloadPalyList(url);
+                string html = HttpHelper.Download(url);
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(html);
                 string fristPath = "//div[@class='wrapper-piclist']/ul/li";
