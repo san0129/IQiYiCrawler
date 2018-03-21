@@ -11,15 +11,15 @@ namespace IQiYiCrawler.Caching
 
         #region Fields
 
-        private CacheSet _cacheSet;
+        private IHttpContextAccessor _httpContextAccessor;
 
         #endregion
 
         #region Ctor
 
-        public PerRequestCacheManager(CacheSet cacheSet)
+        public PerRequestCacheManager(IHttpContextAccessor  httpContextAccessor)
         {
-            _cacheSet = cacheSet;
+            _httpContextAccessor = httpContextAccessor;
         }
         #endregion
 
@@ -30,7 +30,7 @@ namespace IQiYiCrawler.Caching
         /// </summary>
         protected virtual IDictionary<object, object> GetItems()
         {
-            return _cacheSet.Cache;
+            return _httpContextAccessor.HttpContext?.Items;
         }
 
         #endregion
