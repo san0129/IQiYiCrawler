@@ -45,9 +45,14 @@ namespace IQiYiCrawler
             HtmlNodeCollection keyValueNodeList = doc.DocumentNode.SelectNodes(keyValuePath);
 
             HtmlNode classifyNameNode = typeNameList.FirstOrDefault();
+            if (classifyNameNode.InnerText.Contains("您还可以搜索"))
+                return null;
             classify.ClassifyName = classifyNameNode.InnerText;
+
             foreach (var keyValuePar in keyValueNodeList)
             {
+                if (keyValuePar.InnerText == "财经" || keyValuePar.InnerText == "收起" || keyValuePar.InnerText == "其他")
+                    break;
                 classify.DetailClassify.Add(new DetailClassifyViewModel { Name = keyValuePar.InnerText, Value = keyValuePar.Attributes["href"].Value });
             }
             return classify;
