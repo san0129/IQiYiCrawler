@@ -1,4 +1,4 @@
-cd IQiYiCrawler
+cd src
 service kestrel-iqiyi stop
 git pull
 dotnet publish
