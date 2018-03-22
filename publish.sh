@@ -1,3 +1,4 @@
+cd IQiYiCrawler
 service kestrel-iqiyi stop
 git pull
 dotnet publish
