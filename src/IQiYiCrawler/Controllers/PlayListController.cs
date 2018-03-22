@@ -12,10 +12,10 @@ namespace IQiYiCrawler.Controllers
     [EnableCors("any")]
     public class PlayListController : Controller
     {
-        public IEnumerable<PlayViewModel> Get(string url)
+        public IEnumerable<PlayViewModel> Get(string url,string checkedIndex="3")
         {
             url = url.Replace("http://jx.vgoodapi.com/jx.php?url=", "");
-            return PlayListSearch.Crawler(url);
+            return PlayListSearch.Crawler(url,checkedIndex);
         }
     }
 }
