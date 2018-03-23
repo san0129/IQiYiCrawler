@@ -34,9 +34,10 @@ namespace IQiYiCrawler
                     var tvId = nodePlayList[i].Attributes["data-videolist-tvid"].Value;
                     var vId = nodePlayList[i].Attributes["data-videolist-vid"].Value;
                     var node = nodePlayList[i].ChildNodes.FirstOrDefault(n =>n.Name == "a");
-                    var tvUrl = node.Attributes["href"].Value;
+                    var tvUrl = node.Attributes["href"].Value.Remove(0,2);
                     //http://www.iqiyi.com/v_19rrbo7gxg.html?#curid=946111000_0277ef6a29cd9967bb93ab76fd1068f9
-                    playList.Add(new PlayViewModel { Number = i + 1, Url = $"http://jx.aeidu.cn/index.php?url={tvUrl}#curid={tvId}_{vId}" });
+                    
+                    playList.Add(new PlayViewModel { Number = i + 1, Url = $"http://jx.aeidu.cn/index.php?url=http://{tvUrl}#curid={tvId}_{vId}" });
                 }
 
             }
