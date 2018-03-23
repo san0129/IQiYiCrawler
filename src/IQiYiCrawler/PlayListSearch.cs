@@ -34,7 +34,7 @@ namespace IQiYiCrawler
                     var tvId = nodePlayList[i].Attributes["data-videolist-tvid"].Value;
                     var vId= nodePlayList[i].Attributes["data-videolist-vid"].Value;
                     //http://www.iqiyi.com/v_19rrbo7gxg.html?share_sTime=103#curid=946111000_0277ef6a29cd9967bb93ab76fd1068f9
-                    playList.Add(new PlayViewModel { Number = i+1, Url = $"http://jx.vgoodapi.com/jx.php?url=http://www.iqiyi.com/v_19rrbo7gxg.html?share_sTime=103#curid={ tvId+ vId}" });
+                    playList.Add(new PlayViewModel { Number = i+1, Url = $"http://jx.vgoodapi.com/jx.php?url=http://www.iqiyi.com/v_19rrbo7gxg.html?share_sTime=103#curid={tvId}_{vId}" });
                 }
 
         }
