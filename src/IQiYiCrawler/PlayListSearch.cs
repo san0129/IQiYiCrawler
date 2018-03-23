@@ -11,7 +11,7 @@ namespace IQiYiCrawler
     public class PlayListSearch
     {
         private static Logger logger = new Logger(typeof(MoviesSearch));
-        public static List<PlayViewModel> Crawler(string url,string checkedIndex)
+        public static List<PlayViewModel> Crawler(string url, string checkedIndex)
         {
             List<PlayViewModel> playList = new List<PlayViewModel>();
             try
@@ -19,7 +19,7 @@ namespace IQiYiCrawler
                 string html = HttpHelper.Download(url);
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(html);
-                string fristPath =  GetFristPath(checkedIndex);
+                string fristPath = GetFristPath(checkedIndex);
                 HtmlNodeCollection nodeList = doc.DocumentNode.SelectNodes(fristPath);
                 var nodeInfo = nodeList.FirstOrDefault();
                 string playListUrl = nodeInfo.Attributes["href"].Value;
@@ -32,12 +32,14 @@ namespace IQiYiCrawler
                 for (int i = 0; i < nodePlayList.Count; i++)
                 {
                     var tvId = nodePlayList[i].Attributes["data-videolist-tvid"].Value;
-                    var vId= nodePlayList[i].Attributes["data-videolist-vid"].Value;
-                    //http://www.iqiyi.com/v_19rrbo7gxg.html?share_sTime=103#curid=946111000_0277ef6a29cd9967bb93ab76fd1068f9
-                    playList.Add(new PlayViewModel { Number = i+1, Url = $"http://jx.vgoodapi.com/jx.php?url=http://www.iqiyi.com/v_19rrbo7gxg.html?share_sTime=103#curid={tvId}_{vId}" });
+                    var vId = nodePlayList[i].Attributes["data-videolist-vid"].Value;
+                    var node = nodePlayList[i].ChildNodes.FirstOrDefault(n =>n.Name == "a");
+                    var tvUrl = node.Attributes["href"].Value;
+                    //http://www.iqiyi.com/v_19rrbo7gxg.html?#curid=946111000_0277ef6a29cd9967bb93ab76fd1068f9
+                    playList.Add(new PlayViewModel { Number = i + 1, Url = $"http://jx.vgoodapi.com/jx.php?url={tvUrl}#curid={tvId}_{vId}" });
                 }
 
-        }
+            }
             catch (Exception ex)
             {
                 logger.Error("CrawlerMuti出现异常", ex);
@@ -51,7 +53,7 @@ namespace IQiYiCrawler
             switch (checkedIndex)
             {
                 case "0":
-                    path = "//div[@class='info-intro']/h1/a";break;
+                    path = "//div[@class='info-intro']/h1/a"; break;
                 case "3":
                     path = "//*[@id='block-D']/div/div/div[2]/div/div[8]/a"; break;
             }
