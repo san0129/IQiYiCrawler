@@ -50,7 +50,9 @@ namespace IQiYiCrawler
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "api/{controller=movies}/{action=get}/{id?}");
+                    template: "api/{controller}/{action}/{id?}",
+                     defaults: new { controller = "Movies", action = "Get" }
+                    );
             });
             app.UseCors("any");
         }
