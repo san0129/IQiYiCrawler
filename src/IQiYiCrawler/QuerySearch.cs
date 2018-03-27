@@ -62,7 +62,7 @@ namespace IQiYiCrawler
             }
             search.ImageUrl = nodeImage.Attributes["src"].Value;
             search.Title = nodeImage.Attributes["title"].Value;
-            search.Url = nodeInfo.Attributes["href"].Value;
+            search.Url = $"http://jx.vgoodapi.com/jx.php?url={ nodeInfo.Attributes["href"].Value}";
 
             return search;
         }
