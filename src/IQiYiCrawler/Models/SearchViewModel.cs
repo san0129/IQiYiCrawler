@@ -14,8 +14,8 @@ namespace IQiYiCrawler.Models
     }
     public enum SearchType
     {
-        电影=0,
-        电视剧=1,
+        电视剧 = 0,
+        电影 =1,
         综艺=2,
         动漫=3
     }

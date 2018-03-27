@@ -69,7 +69,7 @@ namespace IQiYiCrawler.Caching
             var items = GetItems();
             if (items == null)
                 return;
-            this.RemoveByPattern(pattern, items.Keys.Select(p => p.ToString()));
+           // this.RemoveByPattern(pattern, items.Keys.Select(p => p.ToString()));
         }
 
         public void Clear()
