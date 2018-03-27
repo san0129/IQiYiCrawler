@@ -14,7 +14,11 @@ namespace IQiYiCrawler.Controllers
     public class MoviesController : Controller
     {
         private readonly IMemoryCache _memoryCache;
-        private const string MOVIES_CACHE = "MoviesCache";
+        /// <summary>
+        /// 0:classify
+        /// 1:page
+        /// </summary>
+        private const string MOVIES_CACHE = "MoviesCache_{0}_{1}";
         public MoviesController(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
@@ -33,7 +37,7 @@ namespace IQiYiCrawler.Controllers
         [HttpGet]
         public IEnumerable<MovieViewModel> Get(int page = 1, string classify = "/www/1/-------------11-{0}-1-iqiyi--.html")
         {
-            return _memoryCache.Get(MOVIES_CACHE, () =>
+            return _memoryCache.Get(string.Format(MOVIES_CACHE, classify,page), () =>
              {
                  if (string.IsNullOrEmpty(classify))
                  {

@@ -15,7 +15,7 @@ namespace IQiYiCrawler.Controllers
     public class ClassifyController : Controller
     {
         private readonly IMemoryCache _memoryCache;
-        private const string CLASSIFY_CACHE = "ClassifyCache";
+        private const string CLASSIFY_CACHE = "ClassifyCache_{0}";
         public ClassifyController(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
@@ -23,7 +23,7 @@ namespace IQiYiCrawler.Controllers
         [HttpGet]
         public IEnumerable<ClassifyViewModel> Get(string classify)
         {
-            return _memoryCache.Get(CLASSIFY_CACHE, () =>
+            return _memoryCache.Get(string.Format(CLASSIFY_CACHE, classify), () =>
             {
                 return ClassifySearch.Crawler("http://list.iqiyi.com" + classify);
             });
