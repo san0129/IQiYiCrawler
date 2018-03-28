@@ -26,6 +26,7 @@ namespace IQiYiCrawler.Controllers
             return _memoryCache.Get(string.Format(PALYLIST_CACHE, url), () =>
              {
                  url = url.Replace("http://jx.vgoodapi.com/jx.php?url=", "");
+                 url = url.Replace("?src=search", "");
                  return PlayListSearch.Crawler(url, checkedIndex);
              });
 

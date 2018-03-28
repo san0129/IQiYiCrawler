@@ -20,9 +20,6 @@ namespace IQiYiCrawler
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(html);
                 string fristPath = "//div[@class='search_result_main']/div/div[2]/div/ul/li";
-                //string fristPath = "//div[@class='search_result_main']/div";
-                //html/body/div[2]/div[4]/div[1]
-                //html/body/div[2]/div[4]/div[1]/div/div[2]/div/ul/li[1]
                 HtmlNodeCollection nodeList = doc.DocumentNode.SelectNodes(fristPath);
                 if (nodeList.Count > 5)
                 {

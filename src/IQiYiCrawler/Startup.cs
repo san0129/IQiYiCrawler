@@ -36,7 +36,6 @@ namespace IQiYiCrawler
             });
             services.AddMemoryCache();
             services.AddMvc();
-            //services.AddSingleton<IMemoryCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,8 +45,6 @@ namespace IQiYiCrawler
             {
                 app.UseDeveloperExceptionPage();
             }
-            //app.UseMvc();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
