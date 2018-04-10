@@ -36,8 +36,8 @@ namespace IQiYiCrawler.Controllers
                   {
                       classify = "/www/1/-------------11-{0}-1-iqiyi--.html";
                   }
-                 //11-2-1-iqiyi--
-                 if (!string.IsNullOrEmpty(classify) && classify != "/www/1/-------------11-{0}-1-iqiyi--.html")
+                  //11-2-1-iqiyi--
+                  if (!string.IsNullOrEmpty(classify) && classify != "/www/1/-------------11-{0}-1-iqiyi--.html")
                   {
                       int index = classify.IndexOf("-1-iqiyi");
 
@@ -55,7 +55,15 @@ namespace IQiYiCrawler.Controllers
                       }
                   }
                   classify = string.Format(classify, page);
-                  return MoviesSearch.Crawler($"http://list.iqiyi.com{classify}");
+                  if (classify.Contains("http"))
+                  {
+                      return MoviesSearch.Crawler(classify);
+                  }
+                  else
+                  {
+                      return MoviesSearch.Crawler($"http://list.iqiyi.com{classify}");
+                  }
+
               });
         }
     }
