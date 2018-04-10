@@ -34,7 +34,7 @@ namespace IQiYiCrawler.Utility
         /// <param name="ex"></param>
         public void Error(string msg = "出现异常", Exception ex = null)
         {
-            Console.WriteLine(msg);
+            Console.WriteLine(msg + "/r/n" + ex.Message);
             loger.Error(msg, ex);
         }
 
