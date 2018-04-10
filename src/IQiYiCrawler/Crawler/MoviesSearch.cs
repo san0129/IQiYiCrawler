@@ -18,9 +18,11 @@ namespace IQiYiCrawler
         public static List<MovieViewModel> Crawler(string url)
         {
             List<MovieViewModel> movies = new List<MovieViewModel>();
+            Console.WriteLine(url);
             try
             {
                 string html = HttpHelper.Download(url);
+                Console.WriteLine("DownHtmlOK");
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(html);
                 string fristPath = "//div[@class='wrapper-piclist']/ul/li";
