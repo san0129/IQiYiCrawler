@@ -35,6 +35,7 @@ namespace IQiYiCrawler
             catch (Exception ex)
             {
                 logger.Error("CrawlerMuti出现异常", ex);
+                Console.WriteLine(ex.StackTrace);
             }
             return movies;
         }
